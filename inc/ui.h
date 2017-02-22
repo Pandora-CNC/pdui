@@ -17,6 +17,7 @@ int ui_get_pixcolor_rgba(unsigned char r, unsigned char g, unsigned char b, unsi
 bool ui_map_pixcolor(int pixcolor, SDL_Color *color);
 
 bool ui_clear(int pixcolor);
-bool ui_draw_str_solid(std::string str, SDL_Surface *screen, TTF_Font *font, int pixcolor, int x, int y, SDL_Rect *clip);
+bool ui_blit(SDL_Surface *source, SDL_Surface *buffer, int x, int y, SDL_Rect *clip);
+bool ui_draw_str_solid(std::string str, SDL_Surface *buffer, TTF_Font *font, int pixcolor, int x, int y, SDL_Rect *clip);
 
 #endif

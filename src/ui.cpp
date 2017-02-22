@@ -56,17 +56,23 @@ bool ui_clear(int pixcolor)
   SDL_FillRect(screen, NULL, pixcolor);
 }
 
-bool ui_draw_str_solid(std::string str, SDL_Surface *screen, TTF_Font *font, int pixcolor, int x, int y, SDL_Rect *clip)
+bool ui_blit(SDL_Surface *source, SDL_Surface *buffer, int x, int y, SDL_Rect *clip)
 {
   SDL_Rect offset;
+  offset.x = x;
+  offset.y = y;
+
+  return (SDL_BlitSurface(source, clip, buffer, &offset) != -1);
+}
+
+bool ui_draw_str_solid(std::string str, SDL_Surface *buffer, TTF_Font *font, int pixcolor, int x, int y, SDL_Rect *clip)
+{
   SDL_Color color;
   SDL_Surface *surface = NULL;
   ui_map_pixcolor(pixcolor, &color);
 
   if((surface = TTF_RenderText_Solid(font, str.c_str(), color)) == NULL)
     return false;
-  offset.x = x;
-  offset.y = y;
 
-  return (SDL_BlitSurface(surface, clip, screen, &offset) != -1);
+  return ui_blit(surface, buffer, x, y, clip);
 }

@@ -17,7 +17,13 @@ int main(int argc, char* args[])
   }
 
   ui_clear(ui_get_pixcolor_rgb(0xFF, 0xFF, 0xFF));
-  ui_draw_str_solid("Hello World!", screen, styles_font_default, ui_get_pixcolor(&styles_color_text_main), 1, 1, NULL);
+  ui_draw_str_solid("Hello World!", screen, styles_font_header, ui_get_pixcolor(&styles_color_text_main), 10, 5, NULL);
+  ui_draw_str_solid("Hello MadModder.net!", screen, styles_font_bold, ui_get_pixcolor(&styles_color_text_main), 10, 35, NULL);
+  ui_draw_str_solid("Hello GitHub!", screen, styles_font_default, ui_get_pixcolor(&styles_color_text_main), 10, 55, NULL);
+  SDL_Surface *img = IMG_Load("./assets/madmodder.png");
+  if(img != NULL)
+    ui_blit(img, screen, 10, 80, NULL);
+
   SDL_Flip(screen);
 
   while(1);
