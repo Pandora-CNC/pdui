@@ -5,8 +5,16 @@
 #include "SDL/SDL_ttf.h"
 #include <string>
 
-extern TTF_Font *styles_font_main;
+extern int styles_font_default_size;
+extern TTF_Font *styles_font_default;
+extern int styles_font_bold_size;
+extern TTF_Font *styles_font_bold;
+extern int styles_font_header_size;
 extern TTF_Font *styles_font_header;
-bool styles_init(std::string font_dir, std::string assets_dir);
+
+extern SDL_Color styles_color_text_main;
+
+bool styles_init(void);
+void styles_cleanup(void);
 
 #endif

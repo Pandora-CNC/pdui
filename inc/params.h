@@ -3,8 +3,11 @@
 
 #include <stdint.h>
 
-extern uint32_t SCREEN_WIDTH;
-extern uint32_t SCREEN_HEIGHT;
-extern uint32_t SCREEN_BPP;
+extern const int SCREEN_WIDTH;
+extern const int SCREEN_HEIGHT;
+extern const int SCREEN_BPP;
+
+extern const char* FONTS_DIR;
+extern const char* ASSETS_DIR;
 
 #endif

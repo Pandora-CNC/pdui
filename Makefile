@@ -33,8 +33,13 @@ STRIP=$(CHAINDIR)/bin/$(CHAIN)strip
 RANLIB=$(CHAINDIR)/bin/$(CHAIN)-ranlib
 
 CFLAGS=`pkg-config --cflags sdl` `pkg-config --cflags SDL_image` `pkg-config --cflags SDL_ttf` -I$(IDIR) -I$(ROOTDIR)/include
-LDFLAGS=--static `pkg-config --libs sdl` `pkg-config --libs SDL_image` `pkg-config --libs SDL_ttf` `pkg-config --libs freetype2` `pkg-config --libs libpng` `pkg-config --libs zlib`
+LDFLAGS=`pkg-config --libs sdl` `pkg-config --libs SDL_image` `pkg-config --libs SDL_ttf` `pkg-config --libs freetype2` `pkg-config --libs libpng` `pkg-config --libs zlib`
 STRIPFLAGS=--strip-unneeded
+
+ifeq ($(PLATFORM),arm)
+	CFLAGS+=-DARM
+	LDFLAGS+=--static
+endif
 
 _DEPS=main.h params.h ui.h styles.h
 _OBJ=main.o params.o ui.o styles.o
